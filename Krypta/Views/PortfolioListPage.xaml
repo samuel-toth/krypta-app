@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Krypta.Views.PortfolioListPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    Title="Portfolio">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="OnAddButton_Clicked"  />
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        
+        <Label Text="TOTAL WORTH" HorizontalOptions="End" Margin="30,30,30,0"
+               FontSize="Subtitle" TextColor="#e85d04" />
+        <Label x:Name="PortfolioPrice" HorizontalOptions="End"
+               Margin="0,0,30,0" FontSize="40" TextColor="#042940" />
+        <Label x:Name="NumberOfCoins" HorizontalOptions="End"
+               Margin="0,0,30,30" FontSize="Medium" TextColor="Gray" />
+        
+        <BoxView HeightRequest="1" Color="#e85d04" Margin="0,0,0,0" />
+
+        
+        <Frame CornerRadius="10" Margin="60,0,60,0" Padding="-10,0,-10,0" HasShadow="False" BackgroundColor="Transparent">
+            <Label Text="YOUR ASSETS" HorizontalTextAlignment="Center" TextColor="#e85d04" BackgroundColor="Transparent" FontSize="Title" />
+        </Frame>
+
+        <ListView x:Name="UserCoinsView" ItemTapped="Portfolio_ItemClicked">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="40,5,40,5">
+                            <Image Source="{Binding ImageUrl}" WidthRequest="35" />
+                            <StackLayout>
+                                <Label Text="{Binding Name}" TextColor="#042940" FontAttributes="Bold" />
+                                <Label Text="{Binding Symbol}" FontSize="13" Margin="0,-8,0,0" 
+                                       TextColor="Gray" TextTransform="Uppercase" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding TotalWorth, StringFormat='{0:F2} €'}" 
+                                       HorizontalTextAlignment="End" TextColor="DarkBlue" FontAttributes="Bold" />
+                                <Label HorizontalTextAlignment="End" TextColor="#e85d04" FontSize="13"
+                                       Margin="0,-8,0,0" TextTransform="Uppercase">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="Amount" />
+                                            <Binding Path="Symbol" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

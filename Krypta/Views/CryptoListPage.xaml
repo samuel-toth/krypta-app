@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Krypta.Views.CryptoListPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    Title="Cryptocurrencies">
+
+    <StackLayout>
+        <Frame CornerRadius="10" Margin="60,10,60,0" Padding="-10,0,-10,0" HasShadow="False" BackgroundColor="Transparent">
+            <Label Text="BROWSE CRYPTO" HorizontalTextAlignment="Center" TextColor="#e85d04" BackgroundColor="Transparent" FontSize="Title" />
+        </Frame>
+
+        <StackLayout Padding="10,10,10,0">
+            <SearchBar Placeholder="Search for cryptocurrency" x:Name="SearchBar" TextChanged="SearchBar_TextChanged" />
+        </StackLayout>
+
+        <Label Text="Sort by:" Margin="15, 5, 0, 0" TextColor="#e85d04" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="40" Margin="0,-10,0,0">
+            <Button Text="Name" FontSize="16" Clicked="OnSortByNameButton_Clicked" BackgroundColor="transparent" TextColor="#042940" />
+            <Button Text="Price" FontSize="16" Clicked="OnSortByPriceButton_Clicked" BackgroundColor="transparent" TextColor="#042940" />
+            <Button Text="Change" FontSize="16" Clicked="OnSortByChangeButton_Clicked" BackgroundColor="transparent" TextColor="#042940"  />
+        </StackLayout>
+
+        <BoxView HeightRequest="1" Color="#e85d04" Margin="0,-10,0,0" />
+        <StackLayout>
+            <ListView x:Name="CoinListView" ItemsSource="{Binding Coins}" ItemTapped="OnCoin_ItemClicked">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="40,5,40,5">
+                                <Image Source="{Binding Image}" WidthRequest="35" />
+                                <StackLayout>
+                                    <Label Text="{Binding Name}" TextColor="#042940" FontAttributes="Bold" />
+                                    <Label Text="{Binding Symbol}" FontSize="13" Margin="0,-8,0,0" TextColor="Gray"
+                                           TextTransform="Uppercase" />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding CurrentPrice, StringFormat='{0:F2} €'}"
+                                           HorizontalTextAlignment="End" TextColor="DarkBlue" FontAttributes="Bold" />
+                                    <Label Text="{Binding PriceChangePercentage24H, StringFormat='{0:P} | 24h'}"
+                                           HorizontalTextAlignment="End"
+                                           TextColor="#e85d04" FontSize="13" Margin="0,-8,0,0" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

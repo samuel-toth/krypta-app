@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Krypta.Views.CryptoDetailPage"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True"
+    xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
+
+    <StackLayout>
+        <Frame Margin="15,10,15,10" Padding="10,15,10,15" BackgroundColor="#042940" CornerRadius="10" HasShadow="True" >
+            <forms:ChartView x:Name="Chart1" HeightRequest="250" BackgroundColor="#042940" />
+        </Frame>
+        <StackLayout Orientation="Horizontal" Margin="20,0,20,0">
+            <Button Text="1d" HorizontalOptions="CenterAndExpand" Clicked="OnChartFilterButton_Clicked" BackgroundColor="transparent" TextColor="#e85d04" />
+            <Button Text="7d" HorizontalOptions="CenterAndExpand" Clicked="OnChartFilterButton_Clicked" BackgroundColor="transparent" TextColor="#e85d04" />
+            <Button Text="14d" HorizontalOptions="CenterAndExpand" Clicked="OnChartFilterButton_Clicked" BackgroundColor="transparent" TextColor="#e85d04" />
+            <Button Text="30d" HorizontalOptions="CenterAndExpand" Clicked="OnChartFilterButton_Clicked" BackgroundColor="transparent" TextColor="#e85d04" />
+        </StackLayout>
+        <BoxView HeightRequest="1" Color="#e85d04" Margin="0,0,0,0" />
+
+        <StackLayout Orientation="Horizontal" Padding="20,30,20,0">
+            <Label Text="MARKET STATISTICS" FontSize="Large" TextColor="#042940"
+                   HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+            <Image x:Name="CoinImage" WidthRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="Center" />
+        </StackLayout>
+
+        <Grid Padding="30,10,30,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Market capital rank" Grid.Column="0" Grid.Row="0" />
+            <Label x:Name="MarketCapRank" Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="End"
+                   TextColor="#e85d04" />
+
+            <Label Text="Market capital" Grid.Column="0" Grid.Row="1" />
+            <Label x:Name="MarketCap" Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="End" TextColor="#e85d04" />
+
+            <Label Text="Circulating supply" Grid.Column="0" Grid.Row="2" />
+            <Label x:Name="CirculatingSupply" Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="End" TextColor="#e85d04" />
+
+            <Label Text="Max supply" Grid.Column="0" Grid.Row="3" />
+            <Label x:Name="MaxSupply" Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="End" TextColor="#e85d04" />
+            
+            <Label Text="Total supply" Grid.Column="0" Grid.Row="4" />
+            <Label x:Name="TotalSupply" Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="End" TextColor="#e85d04" />
+
+            <Label Text="All time high" Grid.Column="0" Grid.Row="5" />
+            <Label x:Name="AllTimeHigh" Grid.Column="1" Grid.Row="5" HorizontalTextAlignment="End" TextColor="#e85d04" />
+        </Grid>
+    </StackLayout>
+</ContentPage>
